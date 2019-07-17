@@ -27,14 +27,14 @@ const store = (function () {
 
   const findAndToggleChecked = id => {
     const selectedItem = this.findById(id);
-    selectedItem.checked = !selectedItem;
+    selectedItem.checked = !selectedItem.checked;
   };
 
   function findAndUpdateName(id, newName) {
     try {
       Item.validateName(newName);
       const selectedItem = this.findById(id);
-      selectedItem = newName;
+      selectedItem.name = newName;
     } catch (error) {
       console.log(error.message);
     }
@@ -43,6 +43,14 @@ const store = (function () {
     const index = items.findIndex(item => item.id === id);
     items.splice(index, 1);
   };
+
+  function toggleCheckedFilter () {
+    this.hideCheckedItems = !this.hideCheckedItems;
+  }
+
+  function setSearchTerm (val) {
+    this.searchTerm = val;
+  }
 
 
   return {
@@ -53,7 +61,9 @@ const store = (function () {
     addItem,
     findAndToggleChecked,
     findAndUpdateName,
-    findAndDelete
+    findAndDelete,
+    toggleCheckedFilter,
+    setSearchTerm
   };
 
 }() );
