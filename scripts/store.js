@@ -1,8 +1,9 @@
+
 'use strict';
-/* global shoppingList, cuid */
+/* global cuid */
 
 const store = (function () {
-  const items = [
+  let items = [
     { id: cuid(), name: 'apples', checked: false },
     { id: cuid(), name: 'oranges', checked: false },
     { id: cuid(), name: 'milk', checked: true },
@@ -10,6 +11,11 @@ const store = (function () {
   ];
   let hideCheckedItems = false;
   let searchTerm = '';
-  return {items, hideCheckedItems, searchTerm};
-    
+
+  return {
+    items,
+    hideCheckedItems,
+    searchTerm
+  };
+
 }() );
