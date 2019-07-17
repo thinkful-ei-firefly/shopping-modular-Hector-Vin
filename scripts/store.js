@@ -25,10 +25,10 @@ const store = (function () {
     }
   };
 
-  const findAndToggleChecked = id => {
-    const selectedItem = this.findById(id);
-    selectedItem.checked = !selectedItem.checked;
-  };
+  function findAndToggleChecked(id) {
+    const item = this.findById(id);
+    item.checked = !item.checked;
+  }
 
   function findAndUpdateName(id, newName) {
     try {
